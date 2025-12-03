@@ -1,0 +1,77 @@
+.mobile-icon-wrapper {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+  z-index: 4000;
+
+  pointer-events: none; 
+}
+
+
+.mobile-icon-bar {
+  pointer-events: auto;
+
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.4rem;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  position: relative; 
+}
+
+/* ✅ ANIMOWANY PILL */
+.mobile-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  border-radius: 14px;
+  z-index: 0;
+
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);
+}
+
+/* ✅ IKONY */
+.mobile-icon-btn {
+  background: transparent;
+  border: none;
+  color: #bdbdbd;
+
+  padding: 0.55rem 0.65rem;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.25s ease;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 1;
+
+  svg {
+    stroke: #bdbdbd;
+    transition: 0.25s ease;
+  }
+
+  &.active svg {
+    stroke: white;
+  }
+}
+
+/* ✅ MOBILE ONLY */
+@media (max-width: 820px) {
+  .mobile-icon-bar {
+    display: flex;
+  }
+}

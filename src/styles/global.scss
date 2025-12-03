@@ -1,0 +1,59 @@
+@import "./variables";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: $background;
+  color: $text-primary;
+  font-family: system-ui, sans-serif;
+}
+
+.content {
+  padding-top: 1rem;
+}
+
+
+
+section {
+  padding: 6rem 0;
+}
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.blur-blob {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 60%);
+  filter: blur(24px);
+  z-index: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 3rem;
+  max-width: 1300px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 5.5rem;
+  }
+
+  .profile-card {
+    position: static !important;
+    top: 0;
+  }
+}
