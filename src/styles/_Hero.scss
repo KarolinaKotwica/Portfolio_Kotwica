@@ -1,5 +1,6 @@
 .hero {
   margin-bottom: 4rem;
+  position: relative;
 }
 
 .hero__title {
@@ -15,4 +16,44 @@
   color: #aaa;
   max-width: 550px;
   line-height: 1.6;
+}
+
+.hero__scroll-indicator {
+  margin-top: 2.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  position: absolute;
+  right: 32rem;   
+  top: 90%;    
+  transform: translateY(-50%);
+}
+
+.hero__scroll-icon {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #e5e5e5;
+  opacity: 0.9;
+
+  transition: 0.25s ease;
+}
+
+.hero__scroll-indicator:hover .hero__scroll-icon {
+  border-color: rgba(255, 255, 255, 0.6);
+  opacity: 1;
 }
