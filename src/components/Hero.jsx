@@ -21,8 +21,7 @@ const Hero = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        I specialize in creating elegant UI with React, animations, and
-        thoughtful UX. My focus is performance, clarity, and smooth interactions.
+        Full-stack Web Developer creating modern, performant applications with a strong focus on visual clarity, clean architecture and smooth user experience.
       </motion.p>
     </section>
   );

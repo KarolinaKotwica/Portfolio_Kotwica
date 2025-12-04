@@ -3,13 +3,19 @@ import { motion } from "framer-motion";
 
 const PROJECTS = [
   {
-    title: "Website about recipes. After logging in, you can add a recipe, add to favorites, have a shopping list...",
+    title: "Recipe website with user authentication, recipe creation, favorites system, and shopping list functionality",
     tech: "Node.js | Express.js | MongoDB",
     image: "/projects/book-to-cook.webp",
     link: "https://cookbook.com.pl"
   },
   {
-    title: "Website about wedding. Contains information such as: countdown, invitation, RSVP",
+    title: "E-commerce website built with WordPress",
+    tech: "Wordpress",
+    image: "/projects/superlativ.webp",
+    link: "https://www.superlativ.ch/"
+  },
+  {
+    title: "Wedding website with a countdown timer, digital invitation, and RSVP functionality",
     tech: "Node.js | Express.js",
     image: "/projects/wedding.webp",
     link: "#"
@@ -22,13 +28,13 @@ const PROJECTS = [
   },
   {
     title: "Website using CSS Grid",
-    tech: "HTML | SASS | GRID",
+    tech: "HTML | SASS | Grid",
     image: "/projects/Project_grid.webp",
     link: "https://grid-website-1.netlify.app/"
   },
   {
     title: "Website based on Flexbox",
-    tech: "HTML | SASS | FLEXBOX",
+    tech: "HTML | SASS | Flexbox",
     image: "/projects/hotel-reservation.webp",
     link: "https://hotel-reservation-2.netlify.app/"
   },
@@ -46,13 +52,13 @@ const PROJECTS = [
   },
   {
     title: "Excel website with rhymed content",
-    tech: "HTML | CSS | JAVASCRIPT",
+    tech: "HTML | CSS | Javascript",
     image: "/projects/Excel_website.webp",
     link: "https://karolinakotwica.github.io/Excel/access.html"
   },
   {
     title: "Beauty salon website from PSD template",
-    tech: "HTML | CSS | JAVASCRIPT",
+    tech: "HTML | CSS | Javascript",
     image: "/projects/beauty_website.webp",
     link: "https://karolinakotwica.github.io/Beauty-salon/index.html"
   }

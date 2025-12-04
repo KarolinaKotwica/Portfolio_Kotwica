@@ -24,9 +24,9 @@ const ProfileCard = () => {
       <p className="profile-card__location">Switzerland</p>
 
       <ul className="profile-card__socials">
-        <li><FaGithub /></li>
-        <li><FaLinkedin /></li>
-        <li><FaEnvelope /></li>
+        <li><a href="https://github.com/KarolinaKotwica" target="_blank"><FaGithub /></a></li>
+        <li><a href="https://www.linkedin.com/in/karolina-k-0330a4223/" target="_blank"><FaLinkedin /></a></li>
+        <li><a href="mailto:karolina.kotwica@powercoders.org"><FaEnvelope /></a></li>
       </ul>
     </div>
   );
