@@ -12,8 +12,6 @@ html, body {
   padding-top: 1rem;
 }
 
-
-
 section {
   padding: 6rem 0;
 }
@@ -55,5 +53,9 @@ section {
   .profile-card {
     position: static !important;
     top: 0;
+  }
+
+  section {
+    padding: 5rem 0;
   }
 }

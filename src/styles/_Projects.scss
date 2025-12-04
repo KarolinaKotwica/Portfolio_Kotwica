@@ -70,9 +70,13 @@
   font-weight: 600;
 }
 
-@media (max-width: 900px) {
+
+/* ==========================
+   TABLET (2 COLUMNS)
+========================== */
+@media (max-width: 1100px) and (min-width: 701px) {
   .projects__grid {
-    grid-template-columns: 1fr; 
+    grid-template-columns: repeat(2, 1fr); // ✅ nadal 2 kolumny
   }
 
   .project-card {
@@ -80,6 +84,23 @@
   }
 
   .project-card__image img {
-    height: 180px;
+    height: 190px;
+  }
+}
+
+/* ==========================
+   MOBILE (1 COLUMN)
+========================== */
+@media (max-width: 700px) {
+  .projects__grid {
+    grid-template-columns: 1fr; // ✅ jedna kolumna na telefon
+  }
+
+  .project-card {
+    height: 320px;
+  }
+
+  .project-card__image img {
+    height: 170px;
   }
 }

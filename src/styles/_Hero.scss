@@ -57,3 +57,19 @@
   border-color: rgba(255, 255, 255, 0.6);
   opacity: 1;
 }
+
+/* ==========================
+   TABLET HORIZONTAL CARD
+   from ~700px to ~1200px
+========================== */
+@media (min-width: 700px) and (max-width: 1200px) {
+  .hero, .hero__title, .hero__subtitle {
+    text-align: center;
+    margin: 3rem auto;
+  }
+
+  .hero__scroll-indicator {
+    top: 80%;
+    right: 50%;
+  }
+}

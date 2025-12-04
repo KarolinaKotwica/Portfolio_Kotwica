@@ -14,6 +14,14 @@
   transition: margin-top 0.9s ease;
 }
 
+.profile-card__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+
 .profile-card__photo {
   max-width: 100%;
   width: 80%;
@@ -69,5 +77,53 @@
     width: 60% !important;
     justify-content: center;
     margin: 0 auto;
+  }
+}
+
+/* ==========================
+   TABLET – PROFILE CARD
+   image left, data in column right
+========================== */
+@media (min-width: 700px) and (max-width: 1200px) {
+  .profile-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;  
+    align-items: center;
+
+    gap: 1.6rem;
+    padding: 1.6rem;
+    margin-top: 2.5rem;
+    text-align: left;
+  }
+
+  .profile-card__photo {
+    width: 200px;
+    height: 220px;
+    margin: 0;
+  }
+
+  .profile-card__info {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    gap: 0.4rem;
+    margin-left: 2rem;
+  }
+
+  .profile-card__name {
+    font-size: 1.5rem;
+  }
+
+  .profile-card__role {
+    font-size: 0.95rem;
+  }
+
+  .profile-card__location {
+    font-size: 0.85rem;
+  }
+
+  .profile-card__socials {
+    margin-top: 0.8rem;
+    justify-content: flex-start;
   }
 }

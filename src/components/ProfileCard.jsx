@@ -19,6 +19,7 @@ const ProfileCard = () => {
     <div className={`profile-card ${isStuck ? "profile-card--stuck" : ""}`}>
       <div className="profile-card__photo"></div>
 
+      <div className="profile-card__info">
       <h2 className="profile-card__name">Karolina Kotwica</h2>
       <p className="profile-card__role">Web Developer</p>
       <p className="profile-card__location">Switzerland</p>
@@ -28,6 +29,7 @@ const ProfileCard = () => {
         <li><a href="https://www.linkedin.com/in/karolina-k-0330a4223/" target="_blank"><FaLinkedin /></a></li>
         <li><a href="mailto:karolina.kotwica@powercoders.org"><FaEnvelope /></a></li>
       </ul>
+      </div>
     </div>
   );
 };

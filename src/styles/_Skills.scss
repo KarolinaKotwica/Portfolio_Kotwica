@@ -16,3 +16,29 @@
     color: white;
   }
   
+  /* ==========================
+   TABLET HORIZONTAL CARD
+   from ~700px to ~1200px
+========================== */
+@media (min-width: 700px) and (max-width: 1200px) {
+  .skills {
+    text-align: center;
+  }
+
+  .skills__categories {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 2.5rem;
+    max-width: 700px; 
+    margin: 0 auto 4rem auto;
+  }
+
+  .skills__grid {
+    justify-content: center;
+  }
+
+  .skill-tag {
+    margin: 0;
+  }
+}
+

@@ -15,3 +15,14 @@
   max-width: 600px;
   line-height: 1.55;
 }
+
+/* ==========================
+   TABLET HORIZONTAL CARD
+   from ~700px to ~1200px
+========================== */
+@media (min-width: 700px) and (max-width: 1200px) {
+  .about, .section-title, .about__text {
+    text-align: center;
+    margin: 2.5rem auto;
+  }
+}
