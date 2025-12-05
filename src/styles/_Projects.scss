@@ -93,11 +93,11 @@
 ========================== */
 @media (max-width: 700px) {
   .projects__grid {
-    grid-template-columns: 1fr; // ✅ jedna kolumna na telefon
+    grid-template-columns: 1fr;
   }
 
   .project-card {
-    height: 320px;
+    height: 350px;
   }
 
   .project-card__image img {

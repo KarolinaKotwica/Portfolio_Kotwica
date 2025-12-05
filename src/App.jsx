@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import About from "./components/About";
@@ -24,7 +23,6 @@ function App() {
           <Sidebar />
 
           <main className="content">
-            <Navbar />
             <Hero />
             <About />
             <Skills />

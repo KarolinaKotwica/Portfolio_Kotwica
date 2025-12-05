@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import { translations } from "../i18n/translations";
+import SectionTransition from "./SectionTransition";
 
 const SKILLS = {
   frontend: [
@@ -47,6 +48,7 @@ const Skills = () => {
   const t = translations[lang] || translations.en;
 
   return (
+    <SectionTransition>
     <section id="tech" className="skills">
       <h2 className="section-title">{t.skillsTitle}</h2>
 
@@ -68,6 +70,7 @@ const Skills = () => {
         ))}
       </div>
     </section>
+    </SectionTransition>
   );
 };
 
