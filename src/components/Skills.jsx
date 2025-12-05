@@ -1,54 +1,61 @@
-import React from "react";
+import React, { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
+import { translations } from "../i18n/translations";
 
 const SKILLS = {
-  Frontend: [
+  frontend: [
     "React",
     "JavaScript (ES6+)",
     "TypeScript",
     "HTML5",
     "CSS3 / SCSS",
-    "Bootstrap"
+    "Bootstrap",
   ],
 
-  Backend: [
+  backend: [
     "Node.js",
     "Express.js",
-    "REST APIs"
+    "REST APIs",
   ],
 
-  Databases: [
+  databases: [
     "MongoDB",
     "MySQL / SQL",
-    "DB2"
+    "DB2",
   ],
 
-  "Programming Languages": [
+  languages: [
     "JavaScript",
     "TypeScript",
-    "Python"
+    "Python",
   ],
 
-  CMS: [
-    "WordPress"
+  cms: [
+    "WordPress",
   ],
-  
-  "Tools & Workflow": [
+
+  tools: [
     "Git & GitHub",
     "npm",
     "Vite",
-    "VS Code"
+    "VS Code",
   ],
 };
 
 const Skills = () => {
+  const { lang } = useContext(LanguageContext);
+  const t = translations[lang] || translations.en;
+
   return (
     <section id="tech" className="skills">
-      <h2 className="section-title">Skills</h2>
+      <h2 className="section-title">{t.skillsTitle}</h2>
 
       <div className="skills__categories">
-        {Object.entries(SKILLS).map(([category, items]) => (
-          <div className="skills-category" key={category}>
-            <h3 className="skills-category__title">{category}</h3>
+        {Object.entries(SKILLS).map(([key, items]) => (
+          <div className="skills-category" key={key}>
+            <h3 className="skills-category__title">
+              {t.skillsCategories[key]}
+            </h3>
 
             <div className="skills__grid">
               {items.map((skill) => (

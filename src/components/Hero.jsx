@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { LanguageContext } from "../context/LanguageContext";
+import { translations } from "../i18n/translations";
 
 const Hero = () => {
+  const { lang } = useContext(LanguageContext);
+  const t = translations[lang] || translations.en;
+
+
   const scrollToAbout = () => {
     const el = document.getElementById("about");
     if (el) {
@@ -19,7 +25,7 @@ const Hero = () => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        Building clean, modern <br /> and intuitive digital experiences.
+        {t.heroTitle}
       </motion.h1>
 
       <motion.p
@@ -29,9 +35,7 @@ const Hero = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        Full-stack Web Developer creating modern, performant applications
-        with a strong focus on visual clarity, clean architecture and smooth
-        user experience.
+        {t.heroSubtitle}
       </motion.p>
 
       {/* 🔽 Delikatnie animowana strzałka w dół */}
@@ -49,7 +53,7 @@ const Hero = () => {
           transition={{
             duration: 1.6,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         >
           <ChevronDown size={20} />

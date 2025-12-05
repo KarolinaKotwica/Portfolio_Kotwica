@@ -75,3 +75,30 @@
     display: flex;
   }
 }
+
+
+.mobile-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-left: 2.6rem;
+  font-size: 0.7rem;
+}
+
+.mobile-lang button {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0.15rem 0.2rem;
+  transition: 0.2s ease;
+}
+
+.mobile-lang button.active {
+  color: #fff;
+}
+
+.mobile-lang span {
+  opacity: 0.5;
+}

@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { LanguageContext } from "../context/LanguageContext";
+import { translations } from "../i18n/translations";
 
 const About = () => {
+  const { lang } = useContext(LanguageContext);
+  const t = translations[lang] || translations.en;
+
   return (
     <section id="about" className="about">
-      <h2 className="section-title">About Me</h2>
-      <p className="about__text">
-      I’m Karolina, a Full-stack Web Developer specializing in building modern, performant and scalable web applications. I work across the entire development process — from clean UI design and responsive layouts to well-structured backend logic.
-      </p>
+      <h2 className="section-title">{t.aboutTitle}</h2>
 
-      <p className="about__text">
-      My core experience includes React, modern JavaScript, animations, accessibility and performance-driven development. I focus on writing clean, maintainable code and creating interfaces that feel smooth, intuitive and reliable.
-      </p>
-      <p className="about__text">
-      Curiosity and continuous learning are a big part of who I am as a developer. I enjoy exploring new technologies, refining my craft and pushing each project a little further than the last.
-      </p>
+      <p className="about__text">{t.aboutP1}</p>
+      <p className="about__text">{t.aboutP2}</p>
+      <p className="about__text">{t.aboutP3}</p>
     </section>
   );
 };

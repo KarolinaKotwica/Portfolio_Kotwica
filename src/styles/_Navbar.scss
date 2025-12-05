@@ -72,3 +72,33 @@
     display: none;
   }
 }
+
+
+.nav__lang {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+}
+
+.nav__lang button {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0.2rem 0.3rem;
+  transition: 0.2s ease;
+}
+
+.nav__lang button:hover {
+  color: #fff;
+}
+
+.nav__lang button.active {
+  color: #fff;
+}
+
+.nav__lang span {
+  opacity: 0.5;
+}

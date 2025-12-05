@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
+import { LanguageContext } from "../context/LanguageContext";
+import { translations } from "../i18n/translations";
 
 const CERTIFICATES = [
   {
@@ -25,9 +27,12 @@ const CERTIFICATES = [
 ];
 
 const Certificates = () => {
+  const { lang } = useContext(LanguageContext);
+  const t = translations[lang] || translations.en;
+
   return (
     <section id="certificates" className="certificates">
-      <h2 className="section-title">Certificates</h2>
+      <h2 className="section-title">{t.certificatesTitle}</h2>
 
       <div className="certificates__grid">
         {CERTIFICATES.map((cert, i) => (
@@ -43,7 +48,7 @@ const Certificates = () => {
               delay: i * 0.1
             }}
           >
-            <div className="cert-tile" >
+            <div className="cert-tile">
               <div className="cert-tile__image">
                 <img
                   src={cert.image}
