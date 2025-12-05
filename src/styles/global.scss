@@ -43,6 +43,12 @@ section {
   align-items: start;
 }
 
+@media (max-width: 820px) {
+  .content {
+    text-align: center;
+  }
+}
+
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
