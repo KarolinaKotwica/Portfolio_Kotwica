@@ -38,7 +38,6 @@ const Hero = () => {
         {t.heroSubtitle}
       </motion.p>
 
-      {/* 🔽 Delikatnie animowana strzałka w dół */}
       <motion.button
         type="button"
         className="hero__scroll-indicator hero__scroll-indicator--hero"

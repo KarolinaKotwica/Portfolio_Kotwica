@@ -23,7 +23,6 @@ import React, {
     const btnRefs = useRef({});
     const { lang, setLang } = useContext(LanguageContext);
   
-    // ✅ DETEKCJA SCROLLA
     useEffect(() => {
       const handleScroll = () => {
         if (window.scrollY < 120) setActive("top");
@@ -93,7 +92,6 @@ import React, {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
         >
-          {/* ✅ ANIMOWANY PILL */}
           <motion.div
             className="mobile-pill"
             animate={pillStyle}
@@ -113,7 +111,7 @@ import React, {
             </button>
           ))}
   
-          {/* ✅ LANGUAGE SWITCH */}
+
           <div className="mobile-lang">
             <button
                 className={lang === "en" ? "active" : ""}
