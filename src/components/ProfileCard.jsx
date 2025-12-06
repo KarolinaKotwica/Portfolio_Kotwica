@@ -15,13 +15,37 @@ const ProfileCard = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ✅ NOWA FUNKCJA – TYLKO LEKKIE PRZESUNIĘCIE W DÓŁ
   const scrollDownSlightly = () => {
-    window.scrollBy({
-      top: 200, // możesz zmienić np. 150 albo 300
-      behavior: "smooth",
-    });
+    const start = window.scrollY;
+    const distance = 380;
+    const duration = 1000;
+  
+    let startTime = null;
+ 
+    const easeInOut = (t) => {
+      return t < 0.5
+        ? 2 * t * t
+        : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    };
+  
+    const animation = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+  
+      const linearProgress = Math.min(timeElapsed / duration, 1);
+      const easedProgress = easeInOut(linearProgress);
+  
+      window.scrollTo(0, start + distance * easedProgress);
+  
+      if (linearProgress < 1) {
+        requestAnimationFrame(animation);
+      }
+    };
+  
+    requestAnimationFrame(animation);
   };
+  
+  
 
   return (
     <>
