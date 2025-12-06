@@ -65,3 +65,21 @@ section {
     padding: 5rem 0;
   }
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+button:active,
+a:focus,
+a:active {
+  outline: none;
+  box-shadow: none;
+}
