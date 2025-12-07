@@ -32,7 +32,7 @@ const PROJECTS = [
     },
     tech: "Node.js | Express.js",
     image: "/projects/wedding.webp",
-    link: "#",
+    link: "https://wedding-website-ki7s.onrender.com/",
   },
   {
     title: {
