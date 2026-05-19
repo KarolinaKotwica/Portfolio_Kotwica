@@ -29,9 +29,7 @@ function App() {
         </header>
 
         <div className="layout">
-          <aside>
-            <Sidebar />
-          </aside>
+          <Sidebar />
 
           <main id="main-content" className="content">
             <Hero />
