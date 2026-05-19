@@ -26,6 +26,16 @@ const PROJECTS = [
   },
   {
     title: {
+      en: "Kindergarten and daycare website built with WordPress",
+      pl: "Strona żłobka i przedszkola zbudowana w WordPress",
+      de: "Kita- und Tageskindergarten-Website erstellt mit WordPress",
+    },
+    tech: "WordPress",
+    image: "/projects/rasselschischte.png",
+    link: "https://rasselchischte.ch/",
+  },
+  {
+    title: {
       en: "Wedding website with countdown timer, digital invitation and RSVP functionality",
       pl: "Strona ślubna z odliczaniem, zaproszeniem online i formularzem RSVP",
       de: "Hochzeits-Website mit Countdown, digitaler Einladung und RSVP-Funktion",
