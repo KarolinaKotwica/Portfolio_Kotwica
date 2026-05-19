@@ -50,10 +50,14 @@ const ProfileCard = () => {
   return (
     <>
       <div className={`profile-card ${isStuck ? "profile-card--stuck" : ""}`}>
-        <div className="profile-card__photo"></div>
+        <div
+          className="profile-card__photo"
+          role="img"
+          aria-label="Portrait of Karolina Kotwica"
+        ></div>
 
         <div className="profile-card__info">
-          <h2 className="profile-card__name">Karolina Kotwica</h2>
+          <h1 className="profile-card__name">Karolina Kotwica</h1>
           <p className="profile-card__role">Web Developer</p>
           <p className="profile-card__location">Switzerland</p>
 
@@ -63,8 +67,9 @@ const ProfileCard = () => {
                 href="https://github.com/KarolinaKotwica"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="GitHub profile"
               >
-                <FaGithub />
+                <FaGithub aria-hidden="true" />
               </a>
             </li>
             <li>
@@ -72,13 +77,14 @@ const ProfileCard = () => {
                 href="https://www.linkedin.com/in/karolina-k-0330a4223/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="LinkedIn profile"
               >
-                <FaLinkedin />
+                <FaLinkedin aria-hidden="true" />
               </a>
             </li>
             <li>
-              <a href="mailto:karolina.kotwica@powercoders.org">
-                <FaEnvelope />
+              <a href="mailto:karolina.kotwica@powercoders.org" aria-label="Send email">
+                <FaEnvelope aria-hidden="true" />
               </a>
             </li>
           </ul>

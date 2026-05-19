@@ -10,7 +10,7 @@ const Footer = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      © 2025 Karolina Kotwica — Designed & Built with React
+      © {new Date().getFullYear()} Karolina Kotwica — Designed & Built with React
     </motion.footer>
   );
 };

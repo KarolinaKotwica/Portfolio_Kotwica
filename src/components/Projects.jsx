@@ -11,7 +11,7 @@ const PROJECTS = [
       de: "Rezept-Website mit Benutzeranmeldung, Rezeptspeicherung, Favoritenfunktion und Einkaufsliste",
     },
     tech: "Node.js | Express.js | MongoDB",
-    image: "/projects/book-to-cook.webp",
+    image: "/projects/cookbook.png",
     link: "https://cookbook.com.pl",
   },
   {

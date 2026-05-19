@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
@@ -12,17 +12,28 @@ import MobileIconBar from "./components/MobileIconBar";
 import { LanguageContext } from "./context/LanguageContext";
 
 function App() {
-  const [lang, setLang] = useState("eng");
+  const [lang, setLang] = useState("en");
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.title = "Karolina Kotwica | Web Developer";
+  }, [lang]);
 
   return (
     <LanguageContext.Provider value={{ lang, setLang }}>
       <>
-        <MobileIconBar /> 
+        <a href="#main-content" className="skip-link">Skip to content</a>
+
+        <header>
+          <MobileIconBar />
+        </header>
 
         <div className="layout">
-          <Sidebar />
+          <aside>
+            <Sidebar />
+          </aside>
 
-          <main className="content">
+          <main id="main-content" className="content">
             <Hero />
             <About />
             <Skills />

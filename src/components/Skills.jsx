@@ -26,7 +26,6 @@ const SKILLS = {
   ],
 
   languages: [
-    "JavaScript",
     "TypeScript",
     "Python",
   ],

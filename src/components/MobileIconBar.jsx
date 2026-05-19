@@ -10,11 +10,11 @@ import React, {
   import { LanguageContext } from "../context/LanguageContext";
   
   const SECTIONS = [
-    { id: "top", icon: <Home size={20} /> },
-    { id: "about", icon: <User size={20} /> },
-    { id: "tech", icon: <Wrench size={20} /> },
-    { id: "projects", icon: <FolderKanban size={20} /> },
-    { id: "certificates", icon: <Award size={20} /> },
+    { id: "top", icon: <Home size={20} />, label: "Go to top" },
+    { id: "about", icon: <User size={20} />, label: "About Me" },
+    { id: "tech", icon: <Wrench size={20} />, label: "Skills" },
+    { id: "projects", icon: <FolderKanban size={20} />, label: "Projects" },
+    { id: "certificates", icon: <Award size={20} />, label: "Certificates" },
   ];
   
   const MobileIconBar = () => {
@@ -106,8 +106,9 @@ import React, {
               className={`mobile-icon-btn ${
                 active === item.id ? "active" : ""
               }`}
+              aria-label={item.label}
             >
-              {item.icon}
+              {React.cloneElement(item.icon, { "aria-hidden": true })}
             </button>
           ))}
   
@@ -120,7 +121,7 @@ import React, {
                 EN
             </button>
 
-            <span>|</span>
+            <span aria-hidden="true">|</span>
 
             <button
                 className={lang === "pl" ? "active" : ""}
@@ -129,7 +130,7 @@ import React, {
                 PL
             </button>
 
-            <span>|</span>
+            <span aria-hidden="true">|</span>
 
             <button
                 className={lang === "de" ? "active" : ""}

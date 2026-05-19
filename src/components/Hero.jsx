@@ -43,7 +43,7 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      <motion.h1
+      <motion.h2
         className="hero__title"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ const Hero = () => {
         viewport={{ once: true }}
       >
         {t.heroTitle}
-      </motion.h1>
+      </motion.h2>
 
       <motion.p
         className="hero__subtitle"
