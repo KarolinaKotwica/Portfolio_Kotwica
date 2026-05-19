@@ -16,9 +16,9 @@ const PROJECTS = [
   },
   {
     title: {
-      en: "E-commerce website built with WordPress",
-      pl: "Sklep internetowy zbudowany w WordPress",
-      de: "E-Commerce-Website erstellt mit WordPress",
+      en: "Online shop for lifestyle and children's products, built with WordPress",
+      pl: "Sklep internetowy z artykułami lifestyle i dla dzieci, zbudowany w WordPress",
+      de: "Online-Shop für Lifestyle- und Kinderprodukte, erstellt mit WordPress",
     },
     tech: "WordPress",
     image: "/projects/superlativ.webp",
