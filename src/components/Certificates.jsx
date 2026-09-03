@@ -1,5 +1,6 @@
 import { m } from "framer-motion";
 import { useLanguage } from "../hooks/useLanguage";
+import { CERTIFICATES } from "../data/certificates";
 
 const gridVariants = {
   hidden: {},
@@ -10,14 +11,6 @@ const tileVariants = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
-
-const CERTIFICATES = [
-  { image: "/certificate/Advance-css.webp", name: "Advanced CSS" },
-  { image: "/certificate/seo.webp", name: "SEO" },
-  { image: "/certificate/sql-mysql_for_data_analytics.webp", name: "SQL & MySQL for Data Analytics" },
-  { image: "/certificate/sql.webp", name: "SQL" },
-  { image: "/certificate/web_dev.webp", name: "Web Development" }
-];
 
 const Certificates = () => {
   const { t } = useLanguage();
@@ -39,7 +32,13 @@ const Certificates = () => {
             className="cert-tile-wrapper"
             variants={tileVariants}
           >
-            <div className="cert-tile">
+            <a
+              className="cert-tile"
+              href={cert.image}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.certificateAlt.replace("{name}", cert.name)}
+            >
               <div className="cert-tile__image">
                 <img
                   src={cert.image}
@@ -50,7 +49,7 @@ const Certificates = () => {
                   alt={t.certificateAlt.replace("{name}", cert.name)}
                 />
               </div>
-            </div>
+            </a>
           </m.div>
         ))}
       </m.div>
