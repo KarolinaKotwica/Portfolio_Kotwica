@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import About from "./components/About";
@@ -9,38 +7,41 @@ import Certificates from "./components/Certificates";
 import Footer from "./components/Footer";
 import MobileIconBar from "./components/MobileIconBar";
 
-import { LanguageContext } from "./context/LanguageContext";
+import LanguageProvider from "./context/LanguageProvider";
+import { useLanguage } from "./hooks/useLanguage";
 
-function App() {
-  const [lang, setLang] = useState("en");
-
-  useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
+const Layout = () => {
+  const { t } = useLanguage();
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang }}>
-      <>
-        <a href="#main-content" className="skip-link">Skip to content</a>
+    <>
+      <a href="#main-content" className="skip-link">{t.skipLink}</a>
 
-        <header>
-          <MobileIconBar />
-        </header>
+      <header>
+        <MobileIconBar />
+      </header>
 
-        <div className="layout">
-          <Sidebar />
+      <div className="layout">
+        <Sidebar />
 
-          <main id="main-content" className="content">
-            <Hero />
-            <About />
-            <Skills />
-            <Projects />
-            <Certificates />
-            <Footer />
-          </main>
-        </div>
-      </>
-    </LanguageContext.Provider>
+        <main id="main-content" className="content">
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Certificates />
+          <Footer />
+        </main>
+      </div>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <LanguageProvider>
+      <Layout />
+    </LanguageProvider>
   );
 }
 

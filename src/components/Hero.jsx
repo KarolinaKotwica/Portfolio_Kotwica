@@ -1,13 +1,9 @@
-import { useContext } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { LanguageContext } from "../context/LanguageContext";
-import { translations } from "../i18n/translations";
+import { useLanguage } from "../hooks/useLanguage";
 
 const Hero = () => {
-  const { lang } = useContext(LanguageContext);
-  const t = translations[lang] || translations.en;
-
+  const { t } = useLanguage();
 
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
@@ -39,7 +35,7 @@ const Hero = () => {
         type="button"
         className="hero__scroll-indicator hero__scroll-indicator--hero"
         onClick={scrollToAbout}
-        aria-label="Scroll to About section"
+        aria-label={t.scroll.toAbout}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}

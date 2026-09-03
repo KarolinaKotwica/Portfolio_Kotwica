@@ -1,11 +1,8 @@
-import { useContext } from "react";
-import { LanguageContext } from "../context/LanguageContext";
-import { translations } from "../i18n/translations";
+import { useLanguage } from "../hooks/useLanguage";
 import SectionTransition from "./SectionTransition";
 
 const About = () => {
-  const { lang } = useContext(LanguageContext);
-  const t = translations[lang] || translations.en;
+  const { t } = useLanguage();
 
   return (
     <SectionTransition>

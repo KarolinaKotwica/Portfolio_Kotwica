@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "../hooks/useLanguage";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <motion.footer
       className="footer"
@@ -9,7 +12,7 @@ const Footer = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      © {new Date().getFullYear()} Karolina Kotwica — Designed & Built with React
+      © {new Date().getFullYear()} Karolina Kotwica — {t.footerTagline}
     </motion.footer>
   );
 };

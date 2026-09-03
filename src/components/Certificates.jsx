@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { motion } from "framer-motion";
-import { LanguageContext } from "../context/LanguageContext";
-import { translations } from "../i18n/translations";
+import { useLanguage } from "../hooks/useLanguage";
 
 const CERTIFICATES = [
   { image: "/certificate/Advance-css.webp", name: "Advanced CSS" },
@@ -12,8 +10,7 @@ const CERTIFICATES = [
 ];
 
 const Certificates = () => {
-  const { lang } = useContext(LanguageContext);
-  const t = translations[lang] || translations.en;
+  const { t } = useLanguage();
 
   return (
     <section id="certificates" className="certificates">
@@ -41,7 +38,7 @@ const Certificates = () => {
                   height="1190"
                   loading="lazy"
                   decoding="async"
-                  alt={`${cert.name} certificate`}
+                  alt={t.certificateAlt.replace("{name}", cert.name)}
                 />
               </div>
             </div>

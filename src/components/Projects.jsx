@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { motion } from "framer-motion";
-import { LanguageContext } from "../context/LanguageContext";
-import { translations } from "../i18n/translations";
+import { useLanguage } from "../hooks/useLanguage";
 
 const PROJECTS = [
   {
@@ -139,8 +137,7 @@ const PROJECTS = [
 ];
 
 const Projects = () => {
-  const { lang } = useContext(LanguageContext);
-  const t = translations[lang] || translations.en;
+  const { lang, t } = useLanguage();
 
   return (
     <section id="projects" className="projects">
