@@ -1,20 +1,8 @@
-import React, { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 const ProfileCard = () => {
-  const [isStuck, setIsStuck] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      setIsStuck(window.scrollY > 80);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   const scrollDownSlightly = () => {
     const start = window.scrollY;
     const distance = 380;
@@ -44,12 +32,10 @@ const ProfileCard = () => {
   
     requestAnimationFrame(animation);
   };
-  
-  
 
   return (
     <>
-      <div className={`profile-card ${isStuck ? "profile-card--stuck" : ""}`}>
+      <div className="profile-card">
         <div
           className="profile-card__photo"
           role="img"
@@ -91,7 +77,6 @@ const ProfileCard = () => {
         </div>
       </div>
 
-      {/* ✅ STRZAŁKA POD KARTĄ – LEKKIE SCROLL DOWN */}
       <motion.button
         type="button"
         className="hero__scroll-indicator hero__scroll-indicator--profile"

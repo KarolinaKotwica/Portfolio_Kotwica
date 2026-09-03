@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { LanguageContext } from "../context/LanguageContext";
@@ -16,7 +16,7 @@ const Hero = () => {
     const startY = window.scrollY;
     const targetY = target.getBoundingClientRect().top + startY;
     const distance = targetY - startY;
-    const duration = 900; // im więcej = wolniej (Apple ~900–1100)
+    const duration = 900;
   
     let startTime = null;
   

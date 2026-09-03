@@ -16,22 +16,6 @@ section {
   padding: 6rem 0;
 }
 
-.container {
-  max-width: $max-width;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.blur-blob {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 60%);
-  filter: blur(24px);
-  z-index: 0;
-}
-
 .layout {
   display: grid;
   grid-template-columns: 350px 1fr;

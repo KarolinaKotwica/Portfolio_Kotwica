@@ -1,29 +1,14 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { motion } from "framer-motion";
 import { LanguageContext } from "../context/LanguageContext";
 import { translations } from "../i18n/translations";
 
 const CERTIFICATES = [
-  {
-    image: "/certificate/Advance-css.webp",
-    link: "/certs/cert1.webp"
-  },
-  {
-    image: "/certificate/seo.webp",
-    link: "/certs/cert2.webp"
-  },
-  {
-    image: "/certificate/sql-mysql_for_data_analytics.webp",
-    link: "/certs/cert3.webp"
-  },
-  {
-    image: "/certificate/sql.webp",
-    link: "/certs/cert4.webp"
-  },
-  {
-    image: "/certificate/web_dev.webp",
-    link: "/certs/cert5.webp"
-  }
+  { image: "/certificate/Advance-css.webp" },
+  { image: "/certificate/seo.webp" },
+  { image: "/certificate/sql-mysql_for_data_analytics.webp" },
+  { image: "/certificate/sql.webp" },
+  { image: "/certificate/web_dev.webp" }
 ];
 
 const Certificates = () => {

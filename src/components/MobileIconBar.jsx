@@ -55,7 +55,6 @@ import React, {
       };
     }, []);
   
-    // ✅ RUCH PILL
     const [pillStyle, setPillStyle] = useState({});
   
     useLayoutEffect(() => {
