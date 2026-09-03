@@ -54,16 +54,14 @@ section {
   -webkit-tap-highlight-color: transparent;
 }
 
-button,
-a {
+/* Hide the outline for mouse/touch, keep a clear indicator for keyboard users */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
   outline: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
-button:focus,
-button:active,
-a:focus,
-a:active {
-  outline: none;
-  box-shadow: none;
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 3px;
 }

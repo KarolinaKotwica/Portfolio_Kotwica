@@ -16,7 +16,6 @@ function App() {
 
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.title = "Karolina Kotwica | Web Developer";
   }, [lang]);
 
   return (

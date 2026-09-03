@@ -67,6 +67,7 @@ const Hero = () => {
         type="button"
         className="hero__scroll-indicator hero__scroll-indicator--hero"
         onClick={scrollToAbout}
+        aria-label="Scroll to About section"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}
@@ -80,7 +81,7 @@ const Hero = () => {
             ease: "easeInOut",
           }}
         >
-          <ChevronDown size={20} />
+          <ChevronDown size={20} aria-hidden="true" />
         </motion.span>
       </motion.button>
     </section>

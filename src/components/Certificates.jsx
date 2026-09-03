@@ -4,11 +4,11 @@ import { LanguageContext } from "../context/LanguageContext";
 import { translations } from "../i18n/translations";
 
 const CERTIFICATES = [
-  { image: "/certificate/Advance-css.webp" },
-  { image: "/certificate/seo.webp" },
-  { image: "/certificate/sql-mysql_for_data_analytics.webp" },
-  { image: "/certificate/sql.webp" },
-  { image: "/certificate/web_dev.webp" }
+  { image: "/certificate/Advance-css.webp", name: "Advanced CSS" },
+  { image: "/certificate/seo.webp", name: "SEO" },
+  { image: "/certificate/sql-mysql_for_data_analytics.webp", name: "SQL & MySQL for Data Analytics" },
+  { image: "/certificate/sql.webp", name: "SQL" },
+  { image: "/certificate/web_dev.webp", name: "Web Development" }
 ];
 
 const Certificates = () => {
@@ -22,7 +22,7 @@ const Certificates = () => {
       <div className="certificates__grid">
         {CERTIFICATES.map((cert, i) => (
           <motion.div
-            key={i}
+            key={cert.image}
             className="cert-tile-wrapper"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ const Certificates = () => {
                 <img
                   src={cert.image}
                   loading="lazy"
-                  alt="certificate"
+                  alt={`${cert.name} certificate`}
                 />
               </div>
             </div>

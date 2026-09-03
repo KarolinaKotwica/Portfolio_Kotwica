@@ -148,7 +148,7 @@ const Projects = () => {
                 <img
                   src={project.image}
                   loading="lazy"
-                  alt={project.title[lang] || project.title.en}
+                  alt=""
                 />
               </div>
 

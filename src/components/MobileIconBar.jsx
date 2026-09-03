@@ -83,7 +83,7 @@ import React, {
     };
   
     return (
-      <div className="mobile-icon-wrapper">
+      <nav className="mobile-icon-wrapper" aria-label="Main navigation">
         <motion.div
           className="mobile-icon-bar"
           ref={containerRef}
@@ -106,41 +106,31 @@ import React, {
                 active === item.id ? "active" : ""
               }`}
               aria-label={item.label}
+              aria-current={active === item.id ? "true" : undefined}
             >
               {React.cloneElement(item.icon, { "aria-hidden": true })}
             </button>
           ))}
   
 
-          <div className="mobile-lang">
-            <button
-                className={lang === "en" ? "active" : ""}
-                onClick={() => setLang("en")}
-            >
-                EN
-            </button>
-
-            <span aria-hidden="true">|</span>
-
-            <button
-                className={lang === "pl" ? "active" : ""}
-                onClick={() => setLang("pl")}
-            >
-                PL
-            </button>
-
-            <span aria-hidden="true">|</span>
-
-            <button
-                className={lang === "de" ? "active" : ""}
-                onClick={() => setLang("de")}
-            >
-                DE
-            </button>
-            </div>
+          <div className="mobile-lang" role="group" aria-label="Language selection">
+            {["en", "pl", "de"].map((code, i) => (
+              <React.Fragment key={code}>
+                {i > 0 && <span aria-hidden="true">|</span>}
+                <button
+                  className={lang === code ? "active" : ""}
+                  onClick={() => setLang(code)}
+                  aria-pressed={lang === code}
+                  lang={code}
+                >
+                  {code.toUpperCase()}
+                </button>
+              </React.Fragment>
+            ))}
+          </div>
 
         </motion.div>
-      </div>
+      </nav>
     );
   };
   

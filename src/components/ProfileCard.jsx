@@ -52,7 +52,7 @@ const ProfileCard = () => {
               <a
                 href="https://github.com/KarolinaKotwica"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="GitHub profile"
               >
                 <FaGithub aria-hidden="true" />
@@ -62,7 +62,7 @@ const ProfileCard = () => {
               <a
                 href="https://www.linkedin.com/in/karolina-k-0330a4223/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn profile"
               >
                 <FaLinkedin aria-hidden="true" />
@@ -81,6 +81,7 @@ const ProfileCard = () => {
         type="button"
         className="hero__scroll-indicator hero__scroll-indicator--profile"
         onClick={scrollDownSlightly}
+        aria-label="Scroll down"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
@@ -94,7 +95,7 @@ const ProfileCard = () => {
             ease: "easeInOut",
           }}
         >
-          <ChevronDown size={20} />
+          <ChevronDown size={20} aria-hidden="true" />
         </motion.span>
       </motion.button>
     </>
