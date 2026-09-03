@@ -1,6 +1,10 @@
 .profile-card {
   background: #1f1f1f;
   padding: 2rem;
+  box-sizing: border-box;
+  /* As a grid item, don't let the photo's intrinsic size blow the track */
+  min-width: 0;
+  max-width: 100%;
   border-radius: 28px;
   display: flex;
   flex-direction: column;
@@ -8,10 +12,10 @@
   gap: 0.8rem;
   text-align: center;
   position: sticky;
-  top: 2rem;
+  /* Stick below the fixed icon bar */
+  top: 5.5rem;
   color: white;
   margin-top: 4rem;
-  transition: margin-top 0.9s ease;
 }
 
 .profile-card__info {
@@ -51,20 +55,24 @@
 
 .profile-card__socials {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   padding-left: 0;
 
   li {
     list-style-type: none;
   }
 
-  li a{
-    width: 25px;
-    height: 25px;
-    color: #aaa;  
-    transition: 0.25s;
+  li a {
+    /* 40px box keeps the tap target accessible (WCAG 2.5.8) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+    color: #aaa;
+    transition: color 0.25s;
     cursor: pointer;
-    
 
     &:hover {
       color: #fff;

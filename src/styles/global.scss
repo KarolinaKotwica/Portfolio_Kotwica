@@ -16,12 +16,21 @@ section {
   padding: 6rem 0;
 }
 
+/* Keep anchor-scroll targets clear of the fixed icon bar */
+section[id],
+#main-content {
+  scroll-margin-top: 6rem;
+}
+
 .layout {
   display: grid;
-  grid-template-columns: 350px 1fr;
+  /* minmax(0, 1fr) lets the column shrink below its content's
+     intrinsic width (e.g. images), preventing horizontal overflow */
+  grid-template-columns: 350px minmax(0, 1fr);
   gap: 3rem;
   max-width: 1300px;
-  margin: 4rem auto;
+  /* Top margin clears the fixed icon bar (~72px tall) */
+  margin: 6.5rem auto 4rem;
   padding: 0 2rem;
 
   align-items: start;
@@ -35,7 +44,7 @@ section {
 
 @media (max-width: 900px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
     margin-top: 5.5rem;
   }

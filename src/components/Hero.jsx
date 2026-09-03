@@ -10,36 +10,8 @@ const Hero = () => {
 
 
   const scrollToAbout = () => {
-    const target = document.getElementById("about");
-    if (!target) return;
-  
-    const startY = window.scrollY;
-    const targetY = target.getBoundingClientRect().top + startY;
-    const distance = targetY - startY;
-    const duration = 900;
-  
-    let startTime = null;
-  
-    const easeInOutCubic = (t) =>
-      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-  
-    const animateScroll = (currentTime) => {
-      if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const ease = easeInOutCubic(progress);
-  
-      window.scrollTo(0, startY + distance * ease);
-  
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animateScroll);
-      }
-    };
-  
-    requestAnimationFrame(animateScroll);
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
-  
-  
 
   return (
     <section className="hero">

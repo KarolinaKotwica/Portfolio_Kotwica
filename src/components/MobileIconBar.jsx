@@ -27,28 +27,35 @@ import React, {
       const handleScroll = () => {
         if (window.scrollY < 120) setActive("top");
       };
-  
-      window.addEventListener("scroll", handleScroll);
-  
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+
       const observer = new IntersectionObserver(
         (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActive(entry.target.id);
-            }
-          });
+          // Pick the intersecting section whose center is closest to the
+          // viewport center, so two adjacent sections never fight for "active"
+          const viewportCenter = window.innerHeight / 2;
+          const closest = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => {
+              const centerA = a.boundingClientRect.top + a.boundingClientRect.height / 2;
+              const centerB = b.boundingClientRect.top + b.boundingClientRect.height / 2;
+              return Math.abs(centerA - viewportCenter) - Math.abs(centerB - viewportCenter);
+            })[0];
+
+          if (closest) setActive(closest.target.id);
         },
         {
           rootMargin: "-45% 0px -45% 0px",
           threshold: 0,
         }
       );
-  
-      ["about", "projects", "tech", "certificates"].forEach((id) => {
+
+      SECTIONS.filter((s) => s.id !== "top").forEach(({ id }) => {
         const el = document.getElementById(id);
         if (el) observer.observe(el);
       });
-  
+
       return () => {
         window.removeEventListener("scroll", handleScroll);
         observer.disconnect();
@@ -58,20 +65,26 @@ import React, {
     const [pillStyle, setPillStyle] = useState({});
   
     useLayoutEffect(() => {
-      const btn = btnRefs.current[active];
-      const container = containerRef.current;
-  
-      if (btn && container) {
-        const btnRect = btn.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
-  
-        setPillStyle({
-          width: btnRect.width,
-          height: btnRect.height,
-          x: btnRect.left - containerRect.left,
-          y: btnRect.top - containerRect.top,
-        });
-      }
+      const measure = () => {
+        const btn = btnRefs.current[active];
+        const container = containerRef.current;
+
+        if (btn && container) {
+          const btnRect = btn.getBoundingClientRect();
+          const containerRect = container.getBoundingClientRect();
+
+          setPillStyle({
+            width: btnRect.width,
+            height: btnRect.height,
+            x: btnRect.left - containerRect.left,
+            y: btnRect.top - containerRect.top,
+          });
+        }
+      };
+
+      measure();
+      window.addEventListener("resize", measure);
+      return () => window.removeEventListener("resize", measure);
     }, [active]);
   
     const scrollTo = (id) => {

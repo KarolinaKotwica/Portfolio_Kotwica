@@ -72,7 +72,7 @@
   align-items: center;
   gap: 0.3rem;
   margin-left: 2.6rem;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 .mobile-lang button {
@@ -81,8 +81,9 @@
   color: #aaa;
   cursor: pointer;
   font-weight: 500;
-  padding: 0.15rem 0.2rem;
-  transition: 0.2s ease;
+  /* Larger padding keeps the tap target at ~25px minimum */
+  padding: 0.4rem 0.35rem;
+  transition: color 0.2s ease;
 }
 
 .mobile-lang button.active {
@@ -91,4 +92,20 @@
 
 .mobile-lang span {
   opacity: 0.5;
+}
+
+/* Narrow phones - tighten spacing so the whole bar fits a 360px viewport */
+@media (max-width: 420px) {
+  .mobile-icon-bar {
+    gap: 0.25rem;
+    padding: 0.3rem;
+  }
+
+  .mobile-icon-btn {
+    padding: 0.5rem;
+  }
+
+  .mobile-lang {
+    margin-left: 0.6rem;
+  }
 }
