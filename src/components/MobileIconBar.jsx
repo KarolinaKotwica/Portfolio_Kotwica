@@ -1,7 +1,8 @@
-import { Fragment, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { Fragment, useEffect, useState } from "react";
+import { m } from "framer-motion";
 import { Home, FolderKanban, Wrench, Award, User } from "lucide-react";
 import { useLanguage } from "../hooks/useLanguage";
+import { scrollToElement, scrollToTop } from "../utils/scroll";
 
 const SECTIONS = [
   { id: "top", icon: Home },
@@ -15,8 +16,6 @@ const LANGS = ["en", "pl", "de"];
 
 const MobileIconBar = () => {
   const [active, setActive] = useState("top");
-  const containerRef = useRef(null);
-  const btnRefs = useRef({});
   const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
@@ -58,67 +57,39 @@ const MobileIconBar = () => {
     };
   }, []);
 
-  const [pillStyle, setPillStyle] = useState({});
-
-  useLayoutEffect(() => {
-    const measure = () => {
-      const btn = btnRefs.current[active];
-      const container = containerRef.current;
-
-      if (btn && container) {
-        const btnRect = btn.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
-
-        setPillStyle({
-          width: btnRect.width,
-          height: btnRect.height,
-          x: btnRect.left - containerRect.left,
-          y: btnRect.top - containerRect.top,
-        });
-      }
-    };
-
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [active]);
-
   const scrollTo = (id) => {
     if (id === "top") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      scrollToTop();
     } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      scrollToElement(id);
     }
   };
 
   return (
     <nav className="mobile-icon-wrapper" aria-label={t.nav.ariaLabel}>
-      <motion.div
+      <m.div
         className="mobile-icon-bar"
-        ref={containerRef}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
       >
-        <motion.div
-          className="mobile-pill"
-          animate={pillStyle}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        />
-
         {SECTIONS.map((item) => {
           const Icon = item.icon;
           return (
             <button
               key={item.id}
-              ref={(el) => {
-                btnRefs.current[item.id] = el;
-              }}
               onClick={() => scrollTo(item.id)}
               className={`mobile-icon-btn ${active === item.id ? "active" : ""}`}
               aria-label={t.nav[item.id]}
               aria-current={active === item.id ? "true" : undefined}
             >
+              {active === item.id && (
+                <m.span
+                  className="mobile-pill"
+                  layoutId="nav-pill"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
               <Icon size={20} aria-hidden="true" />
             </button>
           );
@@ -139,7 +110,7 @@ const MobileIconBar = () => {
             </Fragment>
           ))}
         </div>
-      </motion.div>
+      </m.div>
     </nav>
   );
 };

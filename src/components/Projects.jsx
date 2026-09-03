@@ -1,5 +1,17 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useLanguage } from "../hooks/useLanguage";
+
+// Grid staggers its cards once when it enters the viewport, so cards
+// scrolled to later are already visible (no per-card delay build-up)
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const PROJECTS = [
   {
@@ -143,19 +155,18 @@ const Projects = () => {
     <section id="projects" className="projects">
       <h2 className="section-title">{t.projectsTitle}</h2>
 
-      <div className="projects__grid">
-        {PROJECTS.map((project, i) => (
-          <motion.div
+      <m.div
+        className="projects__grid"
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.05 }}
+      >
+        {PROJECTS.map((project) => (
+          <m.div
             key={project.link}
             className="project-card-wrapper"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{
-              duration: 0.6,
-              ease: "easeOut",
-              delay: i * 0.1,
-            }}
+            variants={cardVariants}
           >
             <a
               href={project.link}
@@ -181,9 +192,9 @@ const Projects = () => {
                 </h3>
               </div>
             </a>
-          </motion.div>
+          </m.div>
         ))}
-      </div>
+      </m.div>
     </section>
   );
 };

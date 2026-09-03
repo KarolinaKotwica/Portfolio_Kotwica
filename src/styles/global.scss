@@ -74,3 +74,15 @@ a:focus-visible {
   outline: 2px solid $accent;
   outline-offset: 3px;
 }
+
+/* Respect the OS reduced-motion setting for CSS transitions/animations
+   (framer-motion is covered by MotionConfig reducedMotion="user") */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

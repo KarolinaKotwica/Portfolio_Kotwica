@@ -1,18 +1,15 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
-const SectionTransition = ({ children }) => {
+const SectionTransition = ({ children, y = 18, duration = 0.55, delay = 0 }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
+    <m.div
+      initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }} 
-      transition={{
-        duration: 0.55,
-        ease: "easeOut",
-      }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration, delay, ease: "easeOut" }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 };
 

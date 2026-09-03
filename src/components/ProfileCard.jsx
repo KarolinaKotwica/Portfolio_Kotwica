@@ -1,16 +1,12 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { m } from "framer-motion";
+import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 import { useLanguage } from "../hooks/useLanguage";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+import { scrollToElement } from "../utils/scroll";
 
 const ProfileCard = () => {
   const { t } = useLanguage();
-
-  const scrollDownSlightly = () => {
-    document
-      .getElementById("main-content")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
+  const isMobile = useMediaQuery("(max-width: 820px)");
 
   return (
     <>
@@ -37,7 +33,7 @@ const ProfileCard = () => {
                 rel="noopener noreferrer"
                 aria-label={t.profile.github}
               >
-                <FaGithub aria-hidden="true" />
+                <Github size={22} aria-hidden="true" />
               </a>
             </li>
             <li>
@@ -47,39 +43,41 @@ const ProfileCard = () => {
                 rel="noopener noreferrer"
                 aria-label={t.profile.linkedin}
               >
-                <FaLinkedin aria-hidden="true" />
+                <Linkedin size={22} aria-hidden="true" />
               </a>
             </li>
             <li>
               <a href="mailto:karolina.kotwica@powercoders.org" aria-label={t.profile.email}>
-                <FaEnvelope aria-hidden="true" />
+                <Mail size={22} aria-hidden="true" />
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-      <motion.button
-        type="button"
-        className="hero__scroll-indicator hero__scroll-indicator--profile"
-        onClick={scrollDownSlightly}
-        aria-label={t.scroll.down}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
-        <motion.span
-          className="hero__scroll-icon"
-          animate={{ y: [0, 6, 0] }}
-          transition={{
-            duration: 1.6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+      {isMobile && (
+        <m.button
+          type="button"
+          className="hero__scroll-indicator hero__scroll-indicator--profile"
+          onClick={() => scrollToElement("main-content")}
+          aria-label={t.scroll.down}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <ChevronDown size={20} aria-hidden="true" />
-        </motion.span>
-      </motion.button>
+          <m.span
+            className="hero__scroll-icon"
+            animate={{ y: [0, 6, 0] }}
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ChevronDown size={20} aria-hidden="true" />
+          </m.span>
+        </m.button>
+      )}
     </>
   );
 };

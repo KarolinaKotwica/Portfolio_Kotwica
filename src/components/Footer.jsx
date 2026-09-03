@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useLanguage } from "../hooks/useLanguage";
 
 const Footer = () => {
   const { t } = useLanguage();
 
   return (
-    <motion.footer
+    <m.footer
       className="footer"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -13,7 +13,7 @@ const Footer = () => {
       viewport={{ once: true }}
     >
       © {new Date().getFullYear()} Karolina Kotwica — {t.footerTagline}
-    </motion.footer>
+    </m.footer>
   );
 };
 

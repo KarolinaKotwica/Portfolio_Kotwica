@@ -1,3 +1,5 @@
+import { LazyMotion, MotionConfig, domMax } from "framer-motion";
+
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import About from "./components/About";
@@ -40,7 +42,13 @@ const Layout = () => {
 function App() {
   return (
     <LanguageProvider>
-      <Layout />
+      {/* strict LazyMotion loads only the features we use;
+          MotionConfig honors the OS reduced-motion preference */}
+      <LazyMotion features={domMax} strict>
+        <MotionConfig reducedMotion="user">
+          <Layout />
+        </MotionConfig>
+      </LazyMotion>
     </LanguageProvider>
   );
 }

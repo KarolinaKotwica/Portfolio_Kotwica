@@ -1,5 +1,15 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useLanguage } from "../hooks/useLanguage";
+
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const tileVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const CERTIFICATES = [
   { image: "/certificate/Advance-css.webp", name: "Advanced CSS" },
@@ -16,19 +26,18 @@ const Certificates = () => {
     <section id="certificates" className="certificates">
       <h2 className="section-title">{t.certificatesTitle}</h2>
 
-      <div className="certificates__grid">
-        {CERTIFICATES.map((cert, i) => (
-          <motion.div
+      <m.div
+        className="certificates__grid"
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.05 }}
+      >
+        {CERTIFICATES.map((cert) => (
+          <m.div
             key={cert.image}
             className="cert-tile-wrapper"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{
-              duration: 0.6,
-              ease: "easeOut",
-              delay: i * 0.1
-            }}
+            variants={tileVariants}
           >
             <div className="cert-tile">
               <div className="cert-tile__image">
@@ -42,9 +51,9 @@ const Certificates = () => {
                 />
               </div>
             </div>
-          </motion.div>
+          </m.div>
         ))}
-      </div>
+      </m.div>
     </section>
   );
 };
