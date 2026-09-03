@@ -36,11 +36,14 @@ const ProfileCard = () => {
   return (
     <>
       <div className="profile-card">
-        <div
+        <img
           className="profile-card__photo"
-          role="img"
-          aria-label="Portrait of Karolina Kotwica"
-        ></div>
+          src="/karolina.webp"
+          alt="Portrait of Karolina Kotwica"
+          width="600"
+          height="800"
+          fetchPriority="high"
+        />
 
         <div className="profile-card__info">
           <h1 className="profile-card__name">Karolina Kotwica</h1>

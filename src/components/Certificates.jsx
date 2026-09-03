@@ -37,7 +37,10 @@ const Certificates = () => {
               <div className="cert-tile__image">
                 <img
                   src={cert.image}
+                  width="1600"
+                  height="1190"
                   loading="lazy"
+                  decoding="async"
                   alt={`${cert.name} certificate`}
                 />
               </div>

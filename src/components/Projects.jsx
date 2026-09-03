@@ -11,7 +11,9 @@ const PROJECTS = [
       de: "Rezept-Website mit Benutzeranmeldung, Rezeptspeicherung, Favoritenfunktion und Einkaufsliste",
     },
     tech: "Node.js | Express.js | MongoDB",
-    image: "/projects/cookbook.png",
+    image: "/projects/cookbook.webp",
+    width: 1200,
+    height: 616,
     link: "https://cookbook.com.pl",
   },
   {
@@ -22,6 +24,8 @@ const PROJECTS = [
     },
     tech: "WordPress",
     image: "/projects/superlativ.webp",
+    width: 1200,
+    height: 578,
     link: "https://www.superlativ.ch/",
   },
   {
@@ -31,7 +35,9 @@ const PROJECTS = [
       de: "Kita- und Tageskindergarten-Website erstellt mit WordPress",
     },
     tech: "WordPress",
-    image: "/projects/rasselschischte.png",
+    image: "/projects/rasselschischte.webp",
+    width: 1200,
+    height: 588,
     link: "https://rasselchischte.ch/",
   },
   {
@@ -42,6 +48,8 @@ const PROJECTS = [
     },
     tech: "Node.js | Express.js",
     image: "/projects/wedding.webp",
+    width: 1200,
+    height: 596,
     link: "https://wedding-website-ki7s.onrender.com/",
   },
   {
@@ -52,6 +60,8 @@ const PROJECTS = [
     },
     tech: "HTML | CSS",
     image: "/projects/nails.webp",
+    width: 1200,
+    height: 574,
     link: "https://karolinakotwica.github.io/Beauty-world-grid/",
   },
   {
@@ -62,6 +72,8 @@ const PROJECTS = [
     },
     tech: "HTML | SASS | Grid",
     image: "/projects/Project_grid.webp",
+    width: 1200,
+    height: 576,
     link: "https://grid-website-1.netlify.app/",
   },
   {
@@ -72,6 +84,8 @@ const PROJECTS = [
     },
     tech: "HTML | SASS | Flexbox",
     image: "/projects/hotel-reservation.webp",
+    width: 1200,
+    height: 572,
     link: "https://hotel-reservation-2.netlify.app/",
   },
   {
@@ -82,6 +96,8 @@ const PROJECTS = [
     },
     tech: "HTML | SASS",
     image: "/projects/Naturos.webp",
+    width: 1200,
+    height: 564,
     link: "https://karolinakotwica.github.io/Website-Natours/",
   },
   {
@@ -92,6 +108,8 @@ const PROJECTS = [
     },
     tech: "HTML | JAVASCRIPT",
     image: "/projects/guess-number.webp",
+    width: 1200,
+    height: 588,
     link: "https://karolinakotwica.github.io/Game---Guess-my-number/",
   },
   {
@@ -102,6 +120,8 @@ const PROJECTS = [
     },
     tech: "HTML | CSS | Javascript",
     image: "/projects/Excel_website.webp",
+    width: 860,
+    height: 471,
     link: "https://karolinakotwica.github.io/Excel/access.html",
   },
   {
@@ -112,6 +132,8 @@ const PROJECTS = [
     },
     tech: "HTML | CSS | Javascript",
     image: "/projects/beauty_website.webp",
+    width: 860,
+    height: 448,
     link: "https://karolinakotwica.github.io/Beauty-salon/index.html",
   },
 ];
@@ -147,7 +169,10 @@ const Projects = () => {
               <div className="project-card__image">
                 <img
                   src={project.image}
+                  width={project.width}
+                  height={project.height}
                   loading="lazy"
+                  decoding="async"
                   alt=""
                 />
               </div>
