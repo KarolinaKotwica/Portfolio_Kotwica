@@ -1,6 +1,18 @@
 export const PROJECTS = [
   {
     title: {
+      en: "Classifieds portal with categories, user accounts, featured listings, Instagram integration and online payments",
+      pl: "Portal ogłoszeniowy z kategoriami, kontami użytkowników, wyróżnionymi ogłoszeniami i integracją z Instagramem oraz płatnościami online",
+      de: "Kleinanzeigenportal mit Kategorien, Benutzerkonten, hervorgehobenen Anzeigen, Instagram-Integration und Online-Zahlungen",
+    },
+    tech: "Node.js | Express.js | React | GraphQL | MongoDB",
+    image: "/projects/polskastrefa.webp",
+    width: 780,
+    height: 417,
+    link: "https://polskastrefa.ch/",
+  },
+  {
+    title: {
       en: "Recipe website with user authentication, recipe creation, favorites system, and shopping list functionality",
       pl: "Strona z przepisami z logowaniem użytkownika, dodawaniem przepisów, ulubionymi i listą zakupów",
       de: "Rezept-Website mit Benutzeranmeldung, Rezeptspeicherung, Favoritenfunktion und Einkaufsliste",

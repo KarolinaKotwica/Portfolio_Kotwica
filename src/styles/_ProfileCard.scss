@@ -34,6 +34,8 @@
   height: 250px;
   border-radius: 18px;
   object-fit: cover;
+  /* Portrait photo: anchor the crop near the top so the head stays in frame */
+  object-position: 50% 12%;
   margin-bottom: 1rem;
 }
 
