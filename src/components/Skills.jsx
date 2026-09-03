@@ -1,50 +1,9 @@
-import React, { useContext } from "react";
-import { LanguageContext } from "../context/LanguageContext";
-import { translations } from "../i18n/translations";
+import { useLanguage } from "../hooks/useLanguage";
 import SectionTransition from "./SectionTransition";
-
-const SKILLS = {
-  frontend: [
-    "React",
-    "JavaScript (ES6+)",
-    "TypeScript",
-    "HTML5",
-    "CSS3 / SCSS",
-    "Bootstrap",
-  ],
-
-  backend: [
-    "Node.js",
-    "Express.js",
-    "REST APIs",
-  ],
-
-  databases: [
-    "MongoDB",
-    "MySQL / SQL",
-    "DB2",
-  ],
-
-  languages: [
-    "TypeScript",
-    "Python",
-  ],
-
-  cms: [
-    "WordPress",
-  ],
-
-  tools: [
-    "Git & GitHub",
-    "npm",
-    "Vite",
-    "VS Code",
-  ],
-};
+import { SKILLS } from "../data/skills";
 
 const Skills = () => {
-  const { lang } = useContext(LanguageContext);
-  const t = translations[lang] || translations.en;
+  const { t } = useLanguage();
 
   return (
     <SectionTransition>

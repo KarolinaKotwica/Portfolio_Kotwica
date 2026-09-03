@@ -1,26 +1,20 @@
+@use "./variables" as *;
+
 .about {
   margin-bottom: 4rem;
 }
 
-.section-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-  letter-spacing: -0.01em;
-}
-
 .about__text {
-  color: #bbb;
+  color: $text-soft;
   margin-bottom: 1.1rem;
   max-width: 600px;
   line-height: 1.55;
 }
 
 /* ==========================
-   TABLET HORIZONTAL CARD
-   from ~700px to ~1200px
+   TABLET - centered content
 ========================== */
-@media (min-width: 700px) and (max-width: 1200px) {
+@media (min-width: $bp-sm) and (max-width: $bp-lg) {
   .about, .section-title, .about__text {
     text-align: center;
     margin: 2.5rem auto;

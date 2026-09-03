@@ -1,0 +1,24 @@
+@use "./variables" as *;
+
+// Shared hover-lift card used by project cards and certificate tiles
+@mixin card($radius: $radius-card) {
+  display: block;
+  background: $surface;
+  border-radius: $radius;
+  overflow: hidden;
+  transition: background 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    background: $surface-hover;
+    transform: translateY(-4px);
+  }
+}
+
+// Image that zooms slightly when its card is hovered
+@mixin card-image($zoom: 1.05) {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  background: $image-placeholder;
+  transition: transform 0.5s ease;
+}

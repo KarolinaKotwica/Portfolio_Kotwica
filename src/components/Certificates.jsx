@@ -1,65 +1,58 @@
-import React, { useContext } from "react";
-import { motion } from "framer-motion";
-import { LanguageContext } from "../context/LanguageContext";
-import { translations } from "../i18n/translations";
+import { m } from "framer-motion";
+import { useLanguage } from "../hooks/useLanguage";
+import { CERTIFICATES } from "../data/certificates";
 
-const CERTIFICATES = [
-  {
-    image: "/certificate/Advance-css.webp",
-    link: "/certs/cert1.webp"
-  },
-  {
-    image: "/certificate/seo.webp",
-    link: "/certs/cert2.webp"
-  },
-  {
-    image: "/certificate/sql-mysql_for_data_analytics.webp",
-    link: "/certs/cert3.webp"
-  },
-  {
-    image: "/certificate/sql.webp",
-    link: "/certs/cert4.webp"
-  },
-  {
-    image: "/certificate/web_dev.webp",
-    link: "/certs/cert5.webp"
-  }
-];
+const gridVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const tileVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
 
 const Certificates = () => {
-  const { lang } = useContext(LanguageContext);
-  const t = translations[lang] || translations.en;
+  const { t } = useLanguage();
 
   return (
     <section id="certificates" className="certificates">
       <h2 className="section-title">{t.certificatesTitle}</h2>
 
-      <div className="certificates__grid">
-        {CERTIFICATES.map((cert, i) => (
-          <motion.div
-            key={i}
+      <m.div
+        className="certificates__grid"
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.05 }}
+      >
+        {CERTIFICATES.map((cert) => (
+          <m.div
+            key={cert.image}
             className="cert-tile-wrapper"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{
-              duration: 0.6,
-              ease: "easeOut",
-              delay: i * 0.1
-            }}
+            variants={tileVariants}
           >
-            <div className="cert-tile">
+            <a
+              className="cert-tile"
+              href={cert.image}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t.certificateAlt.replace("{name}", cert.name)}
+            >
               <div className="cert-tile__image">
                 <img
                   src={cert.image}
+                  width="1600"
+                  height="1190"
                   loading="lazy"
-                  alt="certificate"
+                  decoding="async"
+                  alt={t.certificateAlt.replace("{name}", cert.name)}
                 />
               </div>
-            </div>
-          </motion.div>
+            </a>
+          </m.div>
         ))}
-      </div>
+      </m.div>
     </section>
   );
 };

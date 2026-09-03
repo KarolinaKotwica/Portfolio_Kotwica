@@ -1,3 +1,5 @@
+@use "./variables" as *;
+
 .mobile-icon-wrapper {
   position: fixed;
   top: 20px;
@@ -27,10 +29,11 @@
   position: relative; 
 }
 
+/* The pill lives inside the active button; layoutId animates it
+   between buttons with transforms (no width/height reflow) */
 .mobile-pill {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
 
   background: linear-gradient(135deg, #7c3aed, #a855f7);
   border-radius: 14px;
@@ -51,15 +54,16 @@
   align-items: center;
   justify-content: center;
 
-  transition: 0.25s ease;
+  transition: color 0.25s ease;
   cursor: pointer;
 
   position: relative;
-  z-index: 1;
 
   svg {
+    position: relative;
+    z-index: 1;
     stroke: #bdbdbd;
-    transition: 0.25s ease;
+    transition: stroke 0.25s ease;
   }
 
   &.active svg {
@@ -67,20 +71,12 @@
   }
 }
 
-/* MOBILE ONLY */
-@media (max-width: 820px) {
-  .mobile-icon-bar {
-    display: flex;
-  }
-}
-
-
 .mobile-lang {
   display: flex;
   align-items: center;
   gap: 0.3rem;
   margin-left: 2.6rem;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 .mobile-lang button {
@@ -89,8 +85,9 @@
   color: #aaa;
   cursor: pointer;
   font-weight: 500;
-  padding: 0.15rem 0.2rem;
-  transition: 0.2s ease;
+  /* Larger padding keeps the tap target at ~25px minimum */
+  padding: 0.4rem 0.35rem;
+  transition: color 0.2s ease;
 }
 
 .mobile-lang button.active {
@@ -99,4 +96,20 @@
 
 .mobile-lang span {
   opacity: 0.5;
+}
+
+/* Narrow phones - tighten spacing so the whole bar fits a 360px viewport */
+@media (max-width: $bp-xs) {
+  .mobile-icon-bar {
+    gap: 0.25rem;
+    padding: 0.3rem;
+  }
+
+  .mobile-icon-btn {
+    padding: 0.5rem;
+  }
+
+  .mobile-lang {
+    margin-left: 0.6rem;
+  }
 }

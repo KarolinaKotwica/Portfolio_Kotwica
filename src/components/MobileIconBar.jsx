@@ -1,149 +1,118 @@
-import React, {
-    useEffect,
-    useState,
-    useLayoutEffect,
-    useRef,
-    useContext,
-  } from "react";
-  import { motion } from "framer-motion";
-  import { Home, FolderKanban, Wrench, Award, User } from "lucide-react";
-  import { LanguageContext } from "../context/LanguageContext";
-  
-  const SECTIONS = [
-    { id: "top", icon: <Home size={20} />, label: "Go to top" },
-    { id: "about", icon: <User size={20} />, label: "About Me" },
-    { id: "tech", icon: <Wrench size={20} />, label: "Skills" },
-    { id: "projects", icon: <FolderKanban size={20} />, label: "Projects" },
-    { id: "certificates", icon: <Award size={20} />, label: "Certificates" },
-  ];
-  
-  const MobileIconBar = () => {
-    const [active, setActive] = useState("top");
-    const containerRef = useRef(null);
-    const btnRefs = useRef({});
-    const { lang, setLang } = useContext(LanguageContext);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY < 120) setActive("top");
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-  
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActive(entry.target.id);
-            }
-          });
-        },
-        {
-          rootMargin: "-45% 0px -45% 0px",
-          threshold: 0,
-        }
-      );
-  
-      ["about", "projects", "tech", "certificates"].forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) observer.observe(el);
-      });
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        observer.disconnect();
-      };
-    }, []);
-  
-    // ✅ RUCH PILL
-    const [pillStyle, setPillStyle] = useState({});
-  
-    useLayoutEffect(() => {
-      const btn = btnRefs.current[active];
-      const container = containerRef.current;
-  
-      if (btn && container) {
-        const btnRect = btn.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
-  
-        setPillStyle({
-          width: btnRect.width,
-          height: btnRect.height,
-          x: btnRect.left - containerRect.left,
-          y: btnRect.top - containerRect.top,
-        });
-      }
-    }, [active]);
-  
-    const scrollTo = (id) => {
-      if (id === "top") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }
+import { Fragment, useEffect, useState } from "react";
+import { m } from "framer-motion";
+import { Home, FolderKanban, Wrench, Award, User } from "lucide-react";
+import { useLanguage } from "../hooks/useLanguage";
+import { scrollToElement, scrollToTop } from "../utils/scroll";
+
+const SECTIONS = [
+  { id: "top", icon: Home },
+  { id: "about", icon: User },
+  { id: "tech", icon: Wrench },
+  { id: "projects", icon: FolderKanban },
+  { id: "certificates", icon: Award },
+];
+
+const LANGS = ["en", "pl", "de"];
+
+const MobileIconBar = () => {
+  const [active, setActive] = useState("top");
+  const { lang, setLang, t } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 120) setActive("top");
     };
-  
-    return (
-      <div className="mobile-icon-wrapper">
-        <motion.div
-          className="mobile-icon-bar"
-          ref={containerRef}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-        >
-          <motion.div
-            className="mobile-pill"
-            animate={pillStyle}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          />
-  
-          {SECTIONS.map((item) => (
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Pick the intersecting section whose center is closest to the
+        // viewport center, so two adjacent sections never fight for "active"
+        const viewportCenter = window.innerHeight / 2;
+        const closest = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => {
+            const centerA = a.boundingClientRect.top + a.boundingClientRect.height / 2;
+            const centerB = b.boundingClientRect.top + b.boundingClientRect.height / 2;
+            return Math.abs(centerA - viewportCenter) - Math.abs(centerB - viewportCenter);
+          })[0];
+
+        if (closest) setActive(closest.target.id);
+      },
+      {
+        rootMargin: "-45% 0px -45% 0px",
+        threshold: 0,
+      }
+    );
+
+    SECTIONS.filter((s) => s.id !== "top").forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
+  }, []);
+
+  const scrollTo = (id) => {
+    if (id === "top") {
+      scrollToTop();
+    } else {
+      scrollToElement(id);
+    }
+  };
+
+  return (
+    <nav className="mobile-icon-wrapper" aria-label={t.nav.ariaLabel}>
+      <m.div
+        className="mobile-icon-bar"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+      >
+        {SECTIONS.map((item) => {
+          const Icon = item.icon;
+          return (
             <button
               key={item.id}
-              ref={(el) => (btnRefs.current[item.id] = el)}
               onClick={() => scrollTo(item.id)}
-              className={`mobile-icon-btn ${
-                active === item.id ? "active" : ""
-              }`}
-              aria-label={item.label}
+              className={`mobile-icon-btn ${active === item.id ? "active" : ""}`}
+              aria-label={t.nav[item.id]}
+              aria-current={active === item.id ? "true" : undefined}
             >
-              {React.cloneElement(item.icon, { "aria-hidden": true })}
+              {active === item.id && (
+                <m.span
+                  className="mobile-pill"
+                  layoutId="nav-pill"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+              <Icon size={20} aria-hidden="true" />
             </button>
+          );
+        })}
+
+        <div className="mobile-lang" role="group" aria-label={t.nav.langLabel}>
+          {LANGS.map((code, i) => (
+            <Fragment key={code}>
+              {i > 0 && <span aria-hidden="true">|</span>}
+              <button
+                className={lang === code ? "active" : ""}
+                onClick={() => setLang(code)}
+                aria-pressed={lang === code}
+                lang={code}
+              >
+                {code.toUpperCase()}
+              </button>
+            </Fragment>
           ))}
-  
+        </div>
+      </m.div>
+    </nav>
+  );
+};
 
-          <div className="mobile-lang">
-            <button
-                className={lang === "en" ? "active" : ""}
-                onClick={() => setLang("en")}
-            >
-                EN
-            </button>
-
-            <span aria-hidden="true">|</span>
-
-            <button
-                className={lang === "pl" ? "active" : ""}
-                onClick={() => setLang("pl")}
-            >
-                PL
-            </button>
-
-            <span aria-hidden="true">|</span>
-
-            <button
-                className={lang === "de" ? "active" : ""}
-                onClick={() => setLang("de")}
-            >
-                DE
-            </button>
-            </div>
-
-        </motion.div>
-      </div>
-    );
-  };
-  
-  export default MobileIconBar;
-  
+export default MobileIconBar;

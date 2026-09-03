@@ -1,117 +1,83 @@
-import React, { useState, useEffect } from "react";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { m } from "framer-motion";
+import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import { useLanguage } from "../hooks/useLanguage";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+import { scrollToElement } from "../utils/scroll";
 
 const ProfileCard = () => {
-  const [isStuck, setIsStuck] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {
-      setIsStuck(window.scrollY > 80);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const scrollDownSlightly = () => {
-    const start = window.scrollY;
-    const distance = 380;
-    const duration = 1000;
-  
-    let startTime = null;
- 
-    const easeInOut = (t) => {
-      return t < 0.5
-        ? 2 * t * t
-        : 1 - Math.pow(-2 * t + 2, 2) / 2;
-    };
-  
-    const animation = (currentTime) => {
-      if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-  
-      const linearProgress = Math.min(timeElapsed / duration, 1);
-      const easedProgress = easeInOut(linearProgress);
-  
-      window.scrollTo(0, start + distance * easedProgress);
-  
-      if (linearProgress < 1) {
-        requestAnimationFrame(animation);
-      }
-    };
-  
-    requestAnimationFrame(animation);
-  };
-  
-  
+  const { t } = useLanguage();
+  const isMobile = useMediaQuery("(max-width: 900px)");
 
   return (
     <>
-      <div className={`profile-card ${isStuck ? "profile-card--stuck" : ""}`}>
-        <div
+      <div className="profile-card">
+        <img
           className="profile-card__photo"
-          role="img"
-          aria-label="Portrait of Karolina Kotwica"
-        ></div>
+          src="/karolina.webp"
+          alt={t.profile.portraitAlt}
+          width="600"
+          height="900"
+          fetchPriority="high"
+        />
 
         <div className="profile-card__info">
           <h1 className="profile-card__name">Karolina Kotwica</h1>
-          <p className="profile-card__role">Web Developer</p>
-          <p className="profile-card__location">Switzerland</p>
+          <p className="profile-card__role">{t.profile.role}</p>
+          <p className="profile-card__location">{t.profile.location}</p>
 
           <ul className="profile-card__socials">
             <li>
               <a
                 href="https://github.com/KarolinaKotwica"
                 target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub profile"
+                rel="noopener noreferrer"
+                aria-label={t.profile.github}
               >
-                <FaGithub aria-hidden="true" />
+                <Github size={22} aria-hidden="true" />
               </a>
             </li>
             <li>
               <a
                 href="https://www.linkedin.com/in/karolina-k-0330a4223/"
                 target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn profile"
+                rel="noopener noreferrer"
+                aria-label={t.profile.linkedin}
               >
-                <FaLinkedin aria-hidden="true" />
+                <Linkedin size={22} aria-hidden="true" />
               </a>
             </li>
             <li>
-              <a href="mailto:karolina.kotwica@powercoders.org" aria-label="Send email">
-                <FaEnvelope aria-hidden="true" />
+              <a href="mailto:karolina.kotwica@powercoders.org" aria-label={t.profile.email}>
+                <Mail size={22} aria-hidden="true" />
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* ✅ STRZAŁKA POD KARTĄ – LEKKIE SCROLL DOWN */}
-      <motion.button
-        type="button"
-        className="hero__scroll-indicator hero__scroll-indicator--profile"
-        onClick={scrollDownSlightly}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
-        <motion.span
-          className="hero__scroll-icon"
-          animate={{ y: [0, 6, 0] }}
-          transition={{
-            duration: 1.6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+      {isMobile && (
+        <m.button
+          type="button"
+          className="hero__scroll-indicator hero__scroll-indicator--profile"
+          onClick={() => scrollToElement("main-content")}
+          aria-label={t.scroll.down}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <ChevronDown size={20} />
-        </motion.span>
-      </motion.button>
+          <m.span
+            className="hero__scroll-icon"
+            animate={{ y: [0, 6, 0] }}
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ChevronDown size={20} aria-hidden="true" />
+          </m.span>
+        </m.button>
+      )}
     </>
   );
 };

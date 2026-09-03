@@ -1,4 +1,4 @@
-@import "./variables";
+@use "./variables" as *;
 
 html, body {
   margin: 0;
@@ -16,49 +16,43 @@ section {
   padding: 6rem 0;
 }
 
-.container {
-  max-width: $max-width;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+/* Keep anchor-scroll targets clear of the fixed icon bar */
+section[id],
+#main-content {
+  scroll-margin-top: 6rem;
 }
 
-.blur-blob {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.15), transparent 60%);
-  filter: blur(24px);
-  z-index: 0;
+/* Shared heading for About, Skills, Projects and Certificates */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.01em;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 350px 1fr;
+  /* minmax(0, 1fr) lets the column shrink below its content's
+     intrinsic width (e.g. images), preventing horizontal overflow */
+  grid-template-columns: 350px minmax(0, 1fr);
   gap: 3rem;
   max-width: 1300px;
-  margin: 4rem auto;
+  /* Top margin clears the fixed icon bar (~72px tall) */
+  margin: 6.5rem auto 4rem;
   padding: 0 2rem;
 
   align-items: start;
 }
 
-@media (max-width: 820px) {
+@media (max-width: $bp-md) {
   .content {
     text-align: center;
   }
-}
 
-@media (max-width: 900px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
     margin-top: 5.5rem;
-  }
-
-  .profile-card {
-    position: static !important;
-    top: 0;
   }
 
   section {
@@ -70,16 +64,26 @@ section {
   -webkit-tap-highlight-color: transparent;
 }
 
-button,
-a {
+/* Hide the outline for mouse/touch, keep a clear indicator for keyboard users */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
   outline: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
-button:focus,
-button:active,
-a:focus,
-a:active {
-  outline: none;
-  box-shadow: none;
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 3px;
+}
+
+/* Respect the OS reduced-motion setting for CSS transitions/animations
+   (framer-motion is covered by MotionConfig reducedMotion="user") */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

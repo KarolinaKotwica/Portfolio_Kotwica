@@ -1,44 +1,50 @@
+@use "./variables" as *;
+
 .skills {
-    margin-bottom: 4rem;
-  }
-  
-  .skills__grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-  }
-  
-  .skill-tag {
-    padding: 0.45rem 0.9rem;
-    background: #1f1f1f;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    color: white;
-  }
-  
-  /* ==========================
-   TABLET HORIZONTAL CARD
-   from ~700px to ~1200px
+  margin-bottom: 4rem;
+}
+
+.skills__categories {
+  display: grid;
+  gap: 2rem;
+}
+
+.skills-category__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $text-muted;
+  margin: 0 0 0.8rem;
+}
+
+.skills__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.skill-tag {
+  padding: 0.45rem 0.9rem;
+  background: $surface;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: $text-primary;
+}
+
+/* ==========================
+   MOBILE / TABLET - centered
 ========================== */
-@media (max-width: 900px) {
+@media (max-width: $bp-md) {
   .skills {
     text-align: center;
   }
 
   .skills__categories {
-    display: grid;
-    grid-template-columns: 1fr; 
     gap: 2.5rem;
-    max-width: 700px; 
+    max-width: 700px;
     margin: 0 auto 4rem auto;
   }
 
   .skills__grid {
     justify-content: center;
   }
-
-  .skill-tag {
-    margin: 0;
-  }
 }
-

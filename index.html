@@ -2,23 +2,53 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#101112" />
     <title>Karolina Kotwica | Web Developer</title>
     <meta name="description" content="Portfolio of Karolina Kotwica — Full-stack Web Developer based in Switzerland. Specializing in React, Node.js, and modern web applications." />
+    <link rel="canonical" href="https://karolina-kotwica.ch/" />
 
     <meta property="og:title" content="Karolina Kotwica | Web Developer" />
     <meta property="og:description" content="Full-stack Web Developer based in Switzerland. Specializing in React, Node.js, and modern web applications." />
-    <meta property="og:image" content="/karolina.webp" />
+    <meta property="og:image" content="https://karolina-kotwica.ch/karolina.webp" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://karolina-kotwica.ch" />
+    <meta property="og:url" content="https://karolina-kotwica.ch/" />
+    <meta property="og:site_name" content="Karolina Kotwica" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Karolina Kotwica | Web Developer" />
     <meta name="twitter:description" content="Full-stack Web Developer based in Switzerland. Specializing in React, Node.js, and modern web applications." />
-    <meta name="twitter:image" content="/karolina.webp" />
+    <meta name="twitter:image" content="https://karolina-kotwica.ch/karolina.webp" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Karolina Kotwica",
+      "jobTitle": "Web Developer",
+      "url": "https://karolina-kotwica.ch/",
+      "image": "https://karolina-kotwica.ch/karolina.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CH"
+      },
+      "sameAs": [
+        "https://github.com/KarolinaKotwica",
+        "https://www.linkedin.com/in/karolina-k-0330a4223/"
+      ],
+      "knowsAbout": ["React", "JavaScript", "Node.js", "Express.js", "MongoDB", "WordPress", "HTML", "CSS", "Sass"]
+    }
+    </script>
 
     <style>
+      /* Paint the dark background before the JS bundle loads (anti-FOUC) */
+      html {
+        background: #101112;
+      }
       .skip-link {
         position: absolute;
         top: -100%;
