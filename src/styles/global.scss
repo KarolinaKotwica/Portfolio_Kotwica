@@ -1,4 +1,4 @@
-@import "./variables";
+@use "./variables" as *;
 
 html, body {
   margin: 0;
@@ -22,6 +22,14 @@ section[id],
   scroll-margin-top: 6rem;
 }
 
+/* Shared heading for About, Skills, Projects and Certificates */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
 .layout {
   display: grid;
   /* minmax(0, 1fr) lets the column shrink below its content's
@@ -36,22 +44,15 @@ section[id],
   align-items: start;
 }
 
-@media (max-width: 820px) {
+@media (max-width: $bp-md) {
   .content {
     text-align: center;
   }
-}
 
-@media (max-width: 900px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
     margin-top: 5.5rem;
-  }
-
-  .profile-card {
-    position: static !important;
-    top: 0;
   }
 
   section {

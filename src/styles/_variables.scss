@@ -1,10 +1,22 @@
-$background: rgb(16,17,18);
-$surface: rgba(255, 255, 255, 0.03);
+// ===== Colors =====
+$background: rgb(16, 17, 18);
+$surface: #1f1f1f;
+$surface-hover: #282828;
+$image-placeholder: #111;
+
 $text-primary: #f9fafb;
-$text-muted: #9ca3af;
+$text-muted: #aaa;
+$text-soft: #bbb;
+
 $accent: #38bdf8;
 
-$radius: 20px;
+// ===== Radii =====
+$radius-card: 22px;
+$radius-tile: 18px;
 $radius-pill: 999px;
 
-$max-width: 1200px;
+// ===== Breakpoints =====
+$bp-xs: 420px; // narrow phones - tightened nav bar
+$bp-sm: 700px; // single-column grids, phone profile photo
+$bp-md: 900px; // sidebar stacks above content, mobile arrow
+$bp-lg: 1200px; // upper bound for tablet centering

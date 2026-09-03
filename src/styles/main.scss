@@ -1,11 +1,9 @@
-@import "./variables";
-@import "./global";
-
-@import "./MobileIconBar";
-@import "./Hero";
-@import "./Projects";
-@import "./About";
-@import "./Skills";
-@import "./Certificates";
-@import "./ProfileCard";
-@import "./Footer";
+@use "./global";
+@use "./MobileIconBar";
+@use "./Hero";
+@use "./Projects";
+@use "./About";
+@use "./Skills";
+@use "./Certificates";
+@use "./ProfileCard";
+@use "./Footer";

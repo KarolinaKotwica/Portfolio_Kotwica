@@ -1,3 +1,5 @@
+@use "./variables" as *;
+
 .mobile-icon-wrapper {
   position: fixed;
   top: 20px;
@@ -97,7 +99,7 @@
 }
 
 /* Narrow phones - tighten spacing so the whole bar fits a 360px viewport */
-@media (max-width: 420px) {
+@media (max-width: $bp-xs) {
   .mobile-icon-bar {
     gap: 0.25rem;
     padding: 0.3rem;

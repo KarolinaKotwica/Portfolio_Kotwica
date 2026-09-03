@@ -1,3 +1,6 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
 .certificates {
   margin-bottom: 4rem;
 }
@@ -12,20 +15,10 @@
   display: block;
 }
 
-/* Tile */
+/* Tile - a link opening the full-size certificate */
 .cert-tile {
-  display: block;
-  background: #1f1f1f;
-  border-radius: 18px;
-  overflow: hidden;
-  cursor: pointer;
-  height: auto;   
-  transition: 0.25s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    background: #292929;
-  }
+  @include card($radius-tile);
+  text-decoration: none;
 }
 
 /* Image */
@@ -36,19 +29,15 @@
 }
 
 .cert-tile__image img {
-  width: 100%;
+  @include card-image;
   height: auto;
-  object-fit: cover; 
-  display: block;
-  background: #111; 
-  transition: transform 0.5s ease;
 }
 
 .cert-tile:hover .cert-tile__image img {
-  transform: scale(1.03);   
+  transform: scale(1.03);
 }
 
-@media (max-width: 700px) {
+@media (max-width: $bp-sm) {
   .certificates__grid {
     grid-template-columns: 1fr;
   }

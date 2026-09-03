@@ -6,7 +6,7 @@ import { scrollToElement } from "../utils/scroll";
 
 const Hero = () => {
   const { t } = useLanguage();
-  const isMobile = useMediaQuery("(max-width: 820px)");
+  const isMobile = useMediaQuery("(max-width: 900px)");
 
   return (
     <section className="hero">
