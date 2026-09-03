@@ -4,23 +4,29 @@ export const SKILLS = {
     "JavaScript (ES6+)",
     "HTML5",
     "CSS3 / SCSS",
-    "Bootstrap",
   ],
 
   backend: [
     "Node.js",
     "Express.js",
     "REST APIs",
+    "GraphQL",
   ],
 
   databases: [
     "MongoDB",
     "MySQL / SQL",
+  ],
+
+  mainframe: [
+    "IBM z/OS",
     "DB2",
+    "SQL",
+    "JCL",
+    "Change Manager (BMC)",
   ],
 
   languages: [
-    "JavaScript",
     "TypeScript",
     "Python",
   ],
