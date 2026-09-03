@@ -16,7 +16,7 @@ const ProfileCard = () => {
           src="/karolina.webp"
           alt={t.profile.portraitAlt}
           width="600"
-          height="800"
+          height="900"
           fetchPriority="high"
         />
 
