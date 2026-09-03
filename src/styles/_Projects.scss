@@ -15,6 +15,13 @@
   display: block;
 }
 
+/* Cards in the same grid row stretch to the tallest one,
+   so descriptions line up regardless of title length */
+.project-card {
+  height: 100%;
+  box-sizing: border-box;
+}
+
 /* ————————————————————————————————————
    PROJECT CARD
 ————————————————————————————————————— */
